@@ -1,0 +1,17 @@
+./coding_problems/05-friday/friday.py
+./coding_problems/05-friday/test_friday.py
+./coding_problems/02-tuesday/tuesday.py
+./coding_problems/02-tuesday/test_tuesday.py
+./coding_problems/04-thursday/test_thursday.py
+./coding_problems/04-thursday/thursday.py
+./coding_problems/03-wednesday/test_wednesday.py
+./coding_problems/03-wednesday/wednesday.py
+./coding_problems/01-monday/monday.py
+./coding_problems/01-monday/test_monday.py
+./cookie_clicker/server.py
+************* Module server
+cookie_clicker/server.py:41:4: C0103: Method name "do_POST" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)
+
+-----------------------------------
+Your code has been rated at 9.66/10
+
