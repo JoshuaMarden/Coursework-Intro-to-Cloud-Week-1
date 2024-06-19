@@ -1,12 +1,21 @@
 {
  "files": [
   {
-   "file_name": "./coding_problems/04-thursday/thursday.py",
+   "file_name": "./movie_db/db-transfer.py",
    "errors": [
-    "cookie_clicker/server.py:41:4: C0103: Method name \"do_POST\" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)"
+    "movie_db/db-transfer.py:1:0: C0103: Module name \"db-transfer\" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)",
+    "movie_db/db-transfer.py:4:0: W0612: Unused variable 'sys' (unused-variable)",
+    "movie_db/db-transfer.py:4:0: W0611: Unused import sys (unused-import)"
+   ],
+   "score": 85.7
+  },
+  {
+   "file_name": "./cookie_clicker/server.py",
+   "errors": [
+    "cookie_clicker/server.py:45:4: C0103: Method name \"do_POST\" doesn't conform to '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$' pattern (invalid-name)"
    ],
    "score": 96.6
   }
  ],
- "average_score": 96.6
+ "average_score": 91.2
 }
