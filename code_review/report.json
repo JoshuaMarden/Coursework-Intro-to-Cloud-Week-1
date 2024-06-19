@@ -184,11 +184,11 @@
    "file_name": "./movie_db/import.py",
    "errors": [
     "movie_db/import.py:25:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
-    "movie_db/import.py:120:26: R6201: Consider using set for membership test (use-set-for-membership)",
+    "movie_db/import.py:119:26: R6201: Consider using set for membership test (use-set-for-membership)",
     "movie_db/import.py:14:0: W0612: Unused variable 'extras' (unused-variable)",
     "movie_db/import.py:14:0: W0611: Unused extras imported from psycopg2 (unused-import)"
    ],
-   "score": 95.8
+   "score": 95.7
   },
   {
    "file_name": "./cookie_clicker/server.py",
@@ -198,5 +198,5 @@
    "score": 96.6
   }
  ],
- "average_score": 80.3
+ "average_score": 80.2
 }
