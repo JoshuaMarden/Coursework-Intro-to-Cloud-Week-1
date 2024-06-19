@@ -1,23 +1,25 @@
 def meeting(s: str) -> str:
-
-    names = s.split(";")
+    names = s.upper().split(";")
     split_names = []
+
     for name in names:
-        split_names = name.split(":")
-        split_names.append(split_names)
+        split_name = name.split(":")
+        split_names.append(split_name)
 
-    for i in split_names:
-        print(i)
-
+    # Sort by last name first, then by first name
     sorted_names = sorted(split_names, key=lambda name: (name[1], name[0]))
-    for index, name in enumerate(sorted_names):
-        new_list_element = "(" + (", ".join(names)).upper() + ")"
-        sorted_names[index] = new_list_element
 
-    return sorted_names
+    # Create the formatted string
+    formatted_names = ["(" + name[1] + ", " + name[0] +
+                       ")" for name in sorted_names]
+
+    return "".join(formatted_names)
 
 
 if __name__ == "__main__":
 
-    s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"
+    s = "Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn"
     print(meeting(s))
+
+# (ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(STAN, MADISON)(SCHWARZ, VICTORIA)(STAN, MEGAN)(WAHL, ALEXIS)
+# (ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(SCHWARZ, VICTORIA)(STAN, MADISON)(STAN, MEGAN)(WAHL, ALEXIS)
