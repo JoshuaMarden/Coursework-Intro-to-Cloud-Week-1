@@ -21,7 +21,7 @@ from psycopg2 import extras # must specify this import. Not sure why.
 import psycopg2
 import csv
 from db_connect import get_connection
-conn = psycopg2.connect(get_connection())
+conn = get_connection()
 cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
 
