@@ -4,6 +4,10 @@
 Don't forget to run:
 `psql -d lmdb -a -f tables.sql`
 
+Connect to production
+`psql -h <hostname> -p <port> -U <username> -d <database>`
+
+
 In its current state this will create duplicates in the supporting
 tables, but not in movie.
 
@@ -13,10 +17,11 @@ TODO: populate date, country and language tables, THEN link to
 """
 
 
-import csv
-import psycopg2
 from psycopg2 import extras # must specify this import. Not sure why.
-conn = psycopg2.connect("dbname=lmdb user=joshuasigma host=localhost")
+import psycopg2
+import csv
+from db_connect import get_connection
+conn = psycopg2.connect(get_connection)
 cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
 
