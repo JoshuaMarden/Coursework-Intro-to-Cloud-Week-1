@@ -17,11 +17,13 @@ TODO: populate date, country and language tables, THEN link to
 """
 
 
-from psycopg2 import extras # must specify this import. Not sure why.
+# must specify this import. Not sure why.
+from psycopg2 import extras
 import psycopg2
 import csv
 from db_connect import get_connection
-conn = get_connection()
+conn = psycopg2.connect(
+    'psql - h joshua-movie-database.c57vkec7dkkx.eu-west-2.rds.amazonaws.com - p 5432 - U postgres - d postgres')
 cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
 
