@@ -3,30 +3,26 @@ import http.server
 import socketserver
 from http import HTTPStatus
 total_clicks = 0
-
+   
 # Front end: Render a HTML+Javascript Page
-
-
 def html(total_clicks):
-    return f"""
+    return  f"""
         <!DOCTYPE html>
         <head>
-            <title>Child Soldier Detonater</title>
+            <title>Cookie Clicker</title>
             <script>
-                const update = count => document.getElementById("count").innerText = `${{count}} children detonated clicked`
+                const update = count => document.getElementById("count").innerText = `${{count}} cookies clicked`
                 const doClick = async () => update(await (await fetch('/api/click', {{method: "POST"}})).json())
                 const fetchClicks = async () => update(await (await fetch("/api/count")).json())
                 setInterval(fetchClicks, 1000)
             </script>
         </head>
         <h3>Click the cookie to pass the time</h3>
-        <button onclick="doClick()" >&#x1F4A3;</button>
+        <button onclick="doClick()" >&#127850;</button>
         <span id="count">{total_clicks} cookies clicked</span>
     """
-
+    
 # Back end: Handle API requests
-
-
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         global total_clicks
@@ -51,6 +47,5 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(f'{total_clicks}'.encode())
 
-
 print('Launch API')
-socketserver.TCPServer(('', 5000), Handler).serve_forever()
+socketserver.TCPServer(('', 80), Handler).serve_forever()

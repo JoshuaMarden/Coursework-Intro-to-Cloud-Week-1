@@ -103,5 +103,8 @@
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "python.testing.pytestArgs": ["coding_problems"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
