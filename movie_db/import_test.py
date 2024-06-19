@@ -29,6 +29,8 @@ def load_csv(movies_csv: str) -> list[dict]:
 
 def get_genres_and_fill_genre_table(movies: list[dict]) -> None:
     """Get all possible genres and populate genre table"""
+    cur = conn.cursor()
+
     all_genre_categories = set()
 
     for movie in movies:
@@ -45,9 +47,15 @@ def get_genres_and_fill_genre_table(movies: list[dict]) -> None:
             (genre,)
         )
 
+    print(all_genre_categories)
+
+    cur.close()
+
 
 def get_languages_and_fill_language_table(movies: list[dict]) -> None:
     """Get all possible genres and populate genre table"""
+
+    cur = conn.cursor()
 
     all_languages_categories = set()
 
@@ -62,9 +70,13 @@ def get_languages_and_fill_language_table(movies: list[dict]) -> None:
             (language,)
         )
 
+    cur.close()
+
 
 def get_release_dates_and_fill_release_date_table(movies: list[dict]) -> None:
     """Get all possible genres and populate genre table"""
+
+    cur = conn.cursor()
 
     all_dates = set()
 
@@ -78,12 +90,14 @@ def get_release_dates_and_fill_release_date_table(movies: list[dict]) -> None:
             VALUES (%s)",
             (date,)
         )
-        print(date)
+
+    cur.close
 
 
 def get_countries_and_fill_country_table(movies: list[dict]) -> None:
     """Get all possible genres and populate genre table"""
 
+    cur = conn.cursor()
     all_countries = set()
 
     for movie in movies:
@@ -96,11 +110,14 @@ def get_countries_and_fill_country_table(movies: list[dict]) -> None:
             VALUES (%s)",
             (country,)
         )
+    cur.close()
 
 
 def import_movie_straight_to_movie_table(movie: dict) -> int:
     """movie data that goes ONLY into movie table is imported here.
     Returns the id of the movie imported."""
+
+    cur = conn.cursor()
 
     csv_and_database_columns = [
         ("names", "names"),
@@ -132,7 +149,6 @@ def import_movie_straight_to_movie_table(movie: dict) -> int:
                 (column_value,)
             )
             current_movie_id = cur.fetchone()[0]
-            print(current_movie_id)
 
         else:
             cur.execute(
@@ -141,12 +157,14 @@ def import_movie_straight_to_movie_table(movie: dict) -> int:
                 WHERE movie_id = %s",
                 (column_value, current_movie_id)
             )
+    cur.close()
     return current_movie_id
 
 
 def import_language_into_language_and_movie_tables(movie: dict, movie_id) -> None:
     """Takes the movie language, adds it to language table,
     adds language_id to movie table"""
+    cur = conn.cursor()
     column_value = movie.get("country")
     cur.execute("""
                 UPDATE movie
@@ -157,26 +175,31 @@ def import_language_into_language_and_movie_tables(movie: dict, movie_id) -> Non
                 )
                 WHERE movie.movie_id = %s;
             """, (column_value, movie_id,))
+    cur.close()
 
 
 def import_date_into_movie_and_date_tables(movie: dict, movie_id) -> None:
     """Takes the movie date, adds it to date table,
     adds date_id to movie table"""
+    cur = conn.cursor()
     column_value = movie.get("date_x")
     cur.execute("""
                 UPDATE movie
                 SET release_date_id = (
-                    SELECT date_id
+                    SELECT release_date_id
                     FROM release_date
                     WHERE release_date.release_date = %s
                 )
                 WHERE movie.movie_id = %s;
             """, (column_value, movie_id,))
+    cur.close()
 
 
 def import_country_into_country_and_movie_tables(movie: dict, movie_id) -> None:
     """Takes the movie country, adds it to country table,
     adds country_id to movie table"""
+
+    cur = conn.cursor()
 
     column_value = movie.get("orig_lang")
     cur.execute("""
@@ -188,11 +211,14 @@ def import_country_into_country_and_movie_tables(movie: dict, movie_id) -> None:
                 )
                 WHERE movie.movie_id = %s;
             """, (column_value, movie_id,))
+    cur.close()
 
 
 def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
     """Takes movie genres, finds genre_id in genre table, links genre to movie
     via an id in move_genre_assignment, adds id to movie table"""
+
+    cur = conn.cursor()
 
     movie_genres = movie.get("genre")
     movie_genres = movie_genres.split(", ")
@@ -223,6 +249,8 @@ def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
             (movie_genre_assignment_id, movie_id)
         )
 
+    cur.close()
+
 
 def import_movies_to_database(movies: list[dict]) -> None:
     """imports movies from local csv to local database"""
@@ -252,6 +280,5 @@ if __name__ == "__main__":
     cur = conn.cursor()
     movies = load_csv("imdb_movies.csv")
     import_movies_to_database(movies)
-    conn.commit()
     cur.close()
     conn.close()

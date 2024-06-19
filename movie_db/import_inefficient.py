@@ -2,11 +2,18 @@
 
 """
 Don't forget to run:
-`psql -d lmdb -a -f schema.sql`
+`psql -d lmdb -a -f tables.sql`
 
 Connect to production
 `psql -h <hostname> -p <port> -U <username> -d <database>`
 
+
+In its current state this will create duplicates in the supporting
+tables, but not in movie.
+
+TODO: populate date, country and language tables, THEN link to
+      each movie. Avoid duplication. Something similar to
+      what is done with genres but w/o assignment table.
 """
 
 
@@ -29,6 +36,8 @@ def load_csv(movies_csv: str) -> list[dict]:
 
 def get_genres_and_fill_genre_table(movies: list[dict]) -> None:
     """Get all possible genres and populate genre table"""
+
+    cur = conn.cursor()
     all_genre_categories = set()
 
     for movie in movies:
@@ -45,57 +54,7 @@ def get_genres_and_fill_genre_table(movies: list[dict]) -> None:
             (genre,)
         )
 
-
-def get_languages_and_fill_language_table(movies: list[dict]) -> None:
-    """Get all possible genres and populate genre table"""
-
-    all_languages_categories = set()
-
-    for movie in movies:
-        movie_language = movie.get("orig_lang")
-        all_languages_categories.add(movie_language)
-
-    for language in all_languages_categories:
-        cur.execute(
-            "INSERT INTO original_language(original_language)\
-            VALUES (%s)",
-            (language,)
-        )
-
-
-def get_release_dates_and_fill_release_date_table(movies: list[dict]) -> None:
-    """Get all possible genres and populate genre table"""
-
-    all_dates = set()
-
-    for movie in movies:
-        date = movie.get("date_x")
-        all_dates.add(date)
-
-    for date in all_dates:
-        cur.execute(
-            "INSERT INTO release_date(release_date)\
-            VALUES (%s)",
-            (date,)
-        )
-        print(date)
-
-
-def get_countries_and_fill_country_table(movies: list[dict]) -> None:
-    """Get all possible genres and populate genre table"""
-
-    all_countries = set()
-
-    for movie in movies:
-        country = movie.get("country")
-        all_countries.add(country)
-
-    for country in all_countries:
-        cur.execute(
-            "INSERT INTO country(country)\
-            VALUES (%s)",
-            (country,)
-        )
+    conn.commit()
 
 
 def import_movie_straight_to_movie_table(movie: dict) -> int:
@@ -111,6 +70,8 @@ def import_movie_straight_to_movie_table(movie: dict) -> int:
         ("budget_x", "budget"),
         ("revenue", "revenue")
     ]
+
+    cur = conn.cursor()
 
     for name_pair in csv_and_database_columns:
 
@@ -141,58 +102,91 @@ def import_movie_straight_to_movie_table(movie: dict) -> int:
                 WHERE movie_id = %s",
                 (column_value, current_movie_id)
             )
+
+    conn.commit()
+
     return current_movie_id
-
-
-def import_language_into_language_and_movie_tables(movie: dict, movie_id) -> None:
-    """Takes the movie language, adds it to language table,
-    adds language_id to movie table"""
-    column_value = movie.get("country")
-    cur.execute("""
-                UPDATE movie
-                SET country_id = (
-                    SELECT country_id
-                    FROM country
-                    WHERE country.country = %s
-                )
-                WHERE movie.movie_id = %s;
-            """, (column_value, movie_id,))
 
 
 def import_date_into_movie_and_date_tables(movie: dict, movie_id) -> None:
     """Takes the movie date, adds it to date table,
     adds date_id to movie table"""
+
+    cur = conn.cursor()
+
     column_value = movie.get("date_x")
-    cur.execute("""
-                UPDATE movie
-                SET release_date_id = (
-                    SELECT date_id
-                    FROM release_date
-                    WHERE release_date.release_date = %s
-                )
-                WHERE movie.movie_id = %s;
-            """, (column_value, movie_id,))
+    cur.execute(
+        f"INSERT INTO release_date(release_date)\
+                 VALUES (%s)\
+                 RETURNING date_id",
+        (column_value,)
+    )
+    date_id = cur.fetchone()[0]
+    cur.execute(
+        "UPDATE movie\
+                 SET release_date_id = %s\
+                 WHERE movie_id = %s",
+        (date_id, movie_id)
+    )
+
+    conn.commit()
+
+
+def import_language_into_language_and_movie_tables(movie: dict, movie_id) -> None:
+    """Takes the movie language, adds it to language table,
+    adds language_id to movie table"""
+
+    cur = conn.cursor()
+
+    column_value = movie.get("orig_lang")
+    cur.execute(
+        "INSERT INTO original_language(original_language)\
+            VALUES (%s)\
+            RETURNING language_id",
+        (column_value,)
+    )
+    language_id = cur.fetchone()[0]
+
+    cur.execute(
+        "UPDATE movie\
+            SET original_language_id = %s\
+            WHERE movie_id = %s",
+        (language_id, movie_id)
+    )
+
+    conn.commit()
 
 
 def import_country_into_country_and_movie_tables(movie: dict, movie_id) -> None:
     """Takes the movie country, adds it to country table,
     adds country_id to movie table"""
 
-    column_value = movie.get("orig_lang")
-    cur.execute("""
-                UPDATE movie
-                SET original_language_id = (
-                    SELECT language_id
-                    FROM original_language
-                    WHERE original_language.original_language = %s
-                )
-                WHERE movie.movie_id = %s;
-            """, (column_value, movie_id,))
+    cur = conn.cursor()
+
+    column_value = movie.get("country")
+    cur.execute(
+        "INSERT INTO country (country)\
+            VALUES (%s)\
+            RETURNING country_id",
+        (column_value,)
+    )
+    country_id = cur.fetchone()[0]
+
+    cur.execute(
+        "UPDATE movie\
+            SET country_id = %s\
+            WHERE movie_id = %s",
+        (country_id, movie_id)
+    )
+
+    conn.commit()
 
 
 def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
     """Takes movie genres, finds genre_id in genre table, links genre to movie
     via an id in move_genre_assignment, adds id to movie table"""
+
+    cur = conn.cursor()
 
     movie_genres = movie.get("genre")
     movie_genres = movie_genres.split(", ")
@@ -200,8 +194,8 @@ def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
 
         cur.execute(
             "SELECT genre_id\
-                FROM genre\
-                WHERE genre_type = %s",
+            FROM genre\
+            WHERE genre_type = %s",
             (genre,)
         )
 
@@ -209,8 +203,8 @@ def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
 
         cur.execute(
             "INSERT INTO movie_genre_assignment(genre_id, movie_id)\
-                VALUES (%s, %s)\
-                RETURNING movie_genre_assignment_id",
+            VALUES (%s, %s)\
+            RETURNING movie_genre_assignment_id",
             (genre_id, movie_id)
         )
 
@@ -218,23 +212,23 @@ def import_genre_and_link_via_assignment_table(movie: dict, movie_id) -> None:
 
         cur.execute(
             "UPDATE movie\
-                SET genre_id = %s\
-                WHERE movie_id = %s",
+            SET genre_id = %s\
+            WHERE movie_id = %s",
             (movie_genre_assignment_id, movie_id)
         )
+
+    conn.commit()
 
 
 def import_movies_to_database(movies: list[dict]) -> None:
     """imports movies from local csv to local database"""
 
     get_genres_and_fill_genre_table(movies)
-    get_countries_and_fill_country_table(movies)
-    get_languages_and_fill_language_table(movies)
-    get_release_dates_and_fill_release_date_table(movies)
 
     for movie_dict in movies:
 
-        current_movie_id = import_movie_straight_to_movie_table(movie_dict)
+        current_movie_id =\
+            import_movie_straight_to_movie_table(movie_dict)
 
         import_date_into_movie_and_date_tables(
             movie_dict, current_movie_id)
@@ -247,11 +241,10 @@ def import_movies_to_database(movies: list[dict]) -> None:
         import_genre_and_link_via_assignment_table(
             movie_dict, current_movie_id)
 
-
-if __name__ == "__main__":
-    cur = conn.cursor()
-    movies = load_csv("imdb_movies.csv")
-    import_movies_to_database(movies)
-    conn.commit()
     cur.close()
     conn.close()
+
+
+if __name__ == "__main__":
+    movies = load_csv("imdb_movies.csv")
+    import_movies_to_database(movies)
