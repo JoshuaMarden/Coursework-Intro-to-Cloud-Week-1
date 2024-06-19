@@ -53,6 +53,17 @@ movie_db/database.py:5:0: W0611: Unused datetime imported from datetime (unused-
 -----------------------------------
 Your code has been rated at 4.17/10
 
+./movie_db/import_test.py
+************* Module import_test
+movie_db/import_test.py:25:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+movie_db/import_test.py:94:4: W0104: Statement seems to have no effect (pointless-statement)
+movie_db/import_test.py:137:26: R6201: Consider using set for membership test (use-set-for-membership)
+movie_db/import_test.py:14:0: W0612: Unused variable 'extras' (unused-variable)
+movie_db/import_test.py:14:0: W0611: Unused extras imported from psycopg2 (unused-import)
+
+-----------------------------------
+Your code has been rated at 9.55/10
+
 ./movie_db/test_api.py
 ************* Module test_api
 movie_db/test_api.py:205:0: E0102: function already defined line 21 (function-redefined)
@@ -121,6 +132,16 @@ movie_db/test_api.py:3:0: W0611: Unused datetime imported from datetime (unused-
 -----------------------------------
 Your code has been rated at 4.95/10
 
+./movie_db/import_inefficient.py
+************* Module import_inefficient
+movie_db/import_inefficient.py:32:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+movie_db/import_inefficient.py:81:26: R6201: Consider using set for membership test (use-set-for-membership)
+movie_db/import_inefficient.py:21:0: W0612: Unused variable 'extras' (unused-variable)
+movie_db/import_inefficient.py:21:0: W0611: Unused extras imported from psycopg2 (unused-import)
+
+-----------------------------------
+Your code has been rated at 9.53/10
+
 ./movie_db/db_connect.py
 ************* Module db_connect
 movie_db/db_connect.py:4:0: W0612: Unused variable 'sys' (unused-variable)
@@ -159,13 +180,13 @@ Your code has been rated at 7.68/10
 
 ./movie_db/import.py
 ************* Module import
-movie_db/import.py:32:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-movie_db/import.py:81:26: R6201: Consider using set for membership test (use-set-for-membership)
-movie_db/import.py:21:0: W0612: Unused variable 'extras' (unused-variable)
-movie_db/import.py:21:0: W0611: Unused extras imported from psycopg2 (unused-import)
+movie_db/import.py:25:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+movie_db/import.py:120:26: R6201: Consider using set for membership test (use-set-for-membership)
+movie_db/import.py:14:0: W0612: Unused variable 'extras' (unused-variable)
+movie_db/import.py:14:0: W0611: Unused extras imported from psycopg2 (unused-import)
 
 -----------------------------------
-Your code has been rated at 9.53/10
+Your code has been rated at 9.58/10
 
 ./cookie_clicker/server.py
 ************* Module server
