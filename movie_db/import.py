@@ -22,8 +22,8 @@ from psycopg2 import extras
 import psycopg2
 import csv
 from db_connect import get_connection
-conn = psycopg2.connect(
-    'psql - h joshua-movie-database.c57vkec7dkkx.eu-west-2.rds.amazonaws.com - p 5432 - U postgres - d postgres')
+conn = psycopg2.connect(host="joshua-movie-database.c57vkec7dkkx.eu-west-2.rds.amazonaws.com",
+                        port="5432", user="postgres", password="password", database="postgres")
 cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
 
