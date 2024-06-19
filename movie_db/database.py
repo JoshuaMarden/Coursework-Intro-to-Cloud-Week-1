@@ -4,9 +4,12 @@ import json
 from psycopg2.extensions import connection, cursor
 from datetime import datetime, date
 
+from db_connect import get_connection as get_con, load_dotenv_vars
+
 
 def get_connection() -> connection:
-    conn = psycopg2.connect("dbname=lmdb user=joshuasigma host=localhost")
+    load_dotenv_vars()
+    conn = get_con()
     return conn
 
 

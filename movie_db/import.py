@@ -7,6 +7,7 @@ Don't forget to run:
 Connect to production
 `psql -h <hostname> -p <port> -U <username> -d <database>`
 
+There are a lot of nested inserts. VERY inefficient.
 """
 
 
@@ -131,7 +132,6 @@ def import_movie_straight_to_movie_table(movie: dict) -> int:
                 (column_value,)
             )
             current_movie_id = cur.fetchone()[0]
-            print(current_movie_id)
 
         else:
             cur.execute(
@@ -232,6 +232,9 @@ def import_movies_to_database(movies: list[dict]) -> None:
     get_release_dates_and_fill_release_date_table(movies)
 
     for movie_dict in movies:
+
+        movie_name = movie_dict.get('names')
+        print(f"Uploading data for: {movie_name}")
 
         current_movie_id = import_movie_straight_to_movie_table(movie_dict)
 
