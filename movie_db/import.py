@@ -78,7 +78,6 @@ def get_release_dates_and_fill_release_date_table(movies: list[dict]) -> None:
             VALUES (%s)",
             (date,)
         )
-        print(date)
 
 
 def get_countries_and_fill_country_table(movies: list[dict]) -> None:

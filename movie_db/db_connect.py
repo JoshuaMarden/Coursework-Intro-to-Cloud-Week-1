@@ -3,7 +3,7 @@ from os import environ  # Gives the program access to the environment variables
 from dotenv import load_dotenv  # Loads variables from a file into the environment
 import sys
 
-DEBUG = True
+DEBUG = False
 
 
 def load_dotenv_vars():
