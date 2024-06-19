@@ -106,5 +106,17 @@
   "editor.formatOnSaveMode": "file",
   "python.testing.pytestArgs": ["coding_problems"],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "lmdb_connection",
+      "database": "lmdb",
+      "username": "joshuasigma",
+      "password": ""
+    }
+  ]
 }
