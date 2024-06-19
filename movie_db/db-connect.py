@@ -9,9 +9,9 @@ DEBUG = False
 def load_dotenv_details():
 
     if DEBUG is True:
-        load_dotenv('.env_debug')
+        load_dotenv('.env.local')
     else:
-        load_dotenv()
+        load_dotenv('.env.prod')
 
 
 def get_connection():
