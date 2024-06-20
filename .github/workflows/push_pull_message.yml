@@ -1,0 +1,9 @@
+on: push
+
+jobs:
+  echo_message:
+  runs on: ubuntu-latest # Machine to run on
+  steps:
+    - run: node --version # Use whatever the node version is of the agen trunning the script
+    - npm: npm --version # Use whatever the npm version is of the agen trunning
+    - run: echo "Push succesful"
