@@ -33,19 +33,6 @@
   },
   {
    "file_name": "./movie_db/conftest.py",
-   "errors": [
-    "movie_db/conftest.py:14:0: C0301: Line too long (344/150) (line-too-long)",
-    "movie_db/conftest.py:3:0: E0001: Cannot import 'api' due to 'expected an indented block after 'if' statement on line 134 (api, line 135)' (syntax-error)",
-    "movie_db/conftest.py:9:4: W0101: Unreachable code (unreachable)",
-    "movie_db/conftest.py:9:4: W0104: Statement seems to have no effect (pointless-statement)",
-    "movie_db/conftest.py:7:0: W0612: Unused variable 'sample_movie' (unused-variable)",
-    "movie_db/conftest.py:31:0: W0612: Unused variable 'client' (unused-variable)",
-    "movie_db/conftest.py:38:0: W0612: Unused variable 'mock_get_movies' (unused-variable)"
-   ],
-   "score": 15.4
-  },
-  {
-   "file_name": "./movie_db/db_connect.py",
    "errors": [],
    "score": 100.0
   },
@@ -68,5 +55,5 @@
    "score": 96.6
   }
  ],
- "average_score": 70.5
+ "average_score": 81.6
 }

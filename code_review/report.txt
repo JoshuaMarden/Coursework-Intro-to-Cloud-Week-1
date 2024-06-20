@@ -30,18 +30,6 @@ movie_db/test_api.py:5:0: W0611: Unused import conftest (unused-import)
 Your code has been rated at 3.00/10
 
 ./movie_db/conftest.py
-************* Module conftest
-movie_db/conftest.py:14:0: C0301: Line too long (344/150) (line-too-long)
-movie_db/conftest.py:3:0: E0001: Cannot import 'api' due to 'expected an indented block after 'if' statement on line 134 (api, line 135)' (syntax-error)
-movie_db/conftest.py:9:4: W0101: Unreachable code (unreachable)
-movie_db/conftest.py:9:4: W0104: Statement seems to have no effect (pointless-statement)
-movie_db/conftest.py:7:0: W0612: Unused variable 'sample_movie' (unused-variable)
-movie_db/conftest.py:31:0: W0612: Unused variable 'client' (unused-variable)
-movie_db/conftest.py:38:0: W0612: Unused variable 'mock_get_movies' (unused-variable)
-
------------------------------------
-Your code has been rated at 1.54/10
-
 ./movie_db/db_connect.py
 
 ------------------------------------
