@@ -24,7 +24,7 @@ jobs:
 
       - name: Deploy to Staging server
         run: |
-          ssh   -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}
+          ssh  -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}
             cd ${{ secrets.REMOTE_TARGET }}
             git pull origin main
             exit
