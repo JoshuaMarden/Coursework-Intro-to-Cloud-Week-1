@@ -2,7 +2,7 @@ from flask import Flask, current_app, jsonify, request
 from psycopg2 import extras
 from datetime import datetime, date
 from typing import Any
-from database import get_movies, get_movie_by_id, create_movie, update_movie, delete_movie, get_genres, get_genre, get_movies_by_genre, get_movie_by_country, get_countries
+from database import get_movies, get_movie_by_id
 
 
 """
@@ -76,13 +76,6 @@ def endpoint_get_movies():
         except ValueError:
             return jsonify({"error": "Invalid release_date format. Please use MM/DD/YYYY"}), 400
 
-        try:
-            movie = create_movie(title, release_date, genre, actors,
-                                 overview, status, budget, revenue, country, language)
-            return jsonify({'success': True, "movie": movie}), 201
-        except Exception as e:
-
-            return jsonify({"error": str(e)}), 500
     return jsonify({"error": True,
                     "message": "method not allowed ฅ^•ﻌ•^ฅ "}), 405
 
@@ -104,32 +97,6 @@ def endpoint_get_movie(movie_id: int):
 
         if not title and not release_date and not genre and not overview and not status and not budget and not revenue and not country and not language:
             return jsonify({"error": "No fields to update"}), 400
-
-        try:
-            movie = update_movie(
-                title, release_date, genre, overview, status, budget, revenue, country, language)
-            return jsonify({'success': True, "movie": movie}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
-
-    elif request.method == "GET":
-
-        if isinstance(movie_id, int):
-            movie = get_movie_by_id(movie_id)
-
-        if movie:
-            return jsonify(movie), 200
-        else:
-            return jsonify({"error": "Movie not found"}), 404
-
-    elif request.method == "DELETE":
-
-        success = delete_movie(movie_id)
-
-        if not success:
-            return jsonify({"error": "Movie could not be deleted"}), 404
-
-        return jsonify({"message": "Movie deleted"})
 
     if __name__ == "__main__":
         app.run(debug=True, host="0.0.0.0", port=5000)
