@@ -58,14 +58,26 @@ Your code has been rated at 4.30/10
 movie_db/test_api.py:15:0: W0612: Unused variable 'client' (unused-variable)
 movie_db/test_api.py:21:0: W0612: Unused variable 'test_endpoint_index' (unused-variable)
 movie_db/test_api.py:27:0: W0612: Unused variable 'test_endpoint_get_movies' (unused-variable)
-movie_db/test_api.py:33:0: W0612: Unused variable 'test_endpoint_get_movie' (unused-variable)
 movie_db/test_api.py:2:0: W0612: Unused variable 'json' (unused-variable)
 movie_db/test_api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)
 movie_db/test_api.py:2:0: W0611: Unused json imported from flask (unused-import)
 movie_db/test_api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
 
 -----------------------------------
-Your code has been rated at 6.19/10
+Your code has been rated at 5.88/10
+
+./movie_db/conftest.py
+************* Module conftest
+movie_db/conftest.py:14:0: C0301: Line too long (344/150) (line-too-long)
+movie_db/conftest.py:9:4: W0101: Unreachable code (unreachable)
+movie_db/conftest.py:9:4: W0104: Statement seems to have no effect (pointless-statement)
+movie_db/conftest.py:7:0: W0612: Unused variable 'sample_movie' (unused-variable)
+movie_db/conftest.py:31:0: W0612: Unused variable 'mock_endpoint_get_movies' (unused-variable)
+movie_db/conftest.py:3:0: W0612: Unused variable 'app' (unused-variable)
+movie_db/conftest.py:3:0: W0611: Unused app imported from api (unused-import)
+
+-----------------------------------
+Your code has been rated at 2.22/10
 
 ./movie_db/db_connect.py
 
