@@ -8,6 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with: path ./Coursework-Intro-to-Cloud-Week-1
       - name: Debug Repository Path
 
         run: |
