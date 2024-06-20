@@ -30,4 +30,4 @@ jobs:
       - name: Run pytest
         run: |
           source venv/bin/activate
-          pytest test.api
+          pytest
