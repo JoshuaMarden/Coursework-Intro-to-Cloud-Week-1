@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  run_pyrun_pylint:
+  run_pylint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -30,4 +30,4 @@ jobs:
       - name: Run pylint
         run: |
           source venv/bin/activate
-          pytest pylint movie_db/
+          pylint movie_db/
