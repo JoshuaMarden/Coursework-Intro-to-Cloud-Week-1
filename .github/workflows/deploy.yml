@@ -24,9 +24,7 @@ jobs:
 
       - name: Deploy to Staging server
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -tt <<EOF
+          ssh -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}
             cd ${{ secrets.REMOTE_TARGET }}
             git pull origin main
-            # Add any other deployment commands here
             exit
-          EOF
