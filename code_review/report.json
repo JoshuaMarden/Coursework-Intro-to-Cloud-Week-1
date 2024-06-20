@@ -58,15 +58,17 @@
   {
    "file_name": "./movie_db/test_api.py",
    "errors": [
+    "movie_db/test_api.py:5:0: W0612: Unused variable 'conftest' (unused-variable)",
     "movie_db/test_api.py:15:0: W0612: Unused variable 'client' (unused-variable)",
     "movie_db/test_api.py:21:0: W0612: Unused variable 'test_endpoint_index' (unused-variable)",
     "movie_db/test_api.py:27:0: W0612: Unused variable 'test_endpoint_get_movies' (unused-variable)",
     "movie_db/test_api.py:2:0: W0612: Unused variable 'json' (unused-variable)",
     "movie_db/test_api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)",
     "movie_db/test_api.py:2:0: W0611: Unused json imported from flask (unused-import)",
-    "movie_db/test_api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)"
+    "movie_db/test_api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)",
+    "movie_db/test_api.py:5:0: W0611: Unused import conftest (unused-import)"
    ],
-   "score": 58.8
+   "score": 55.0
   },
   {
    "file_name": "./movie_db/conftest.py",
@@ -75,11 +77,10 @@
     "movie_db/conftest.py:9:4: W0101: Unreachable code (unreachable)",
     "movie_db/conftest.py:9:4: W0104: Statement seems to have no effect (pointless-statement)",
     "movie_db/conftest.py:7:0: W0612: Unused variable 'sample_movie' (unused-variable)",
-    "movie_db/conftest.py:31:0: W0612: Unused variable 'mock_endpoint_get_movies' (unused-variable)",
-    "movie_db/conftest.py:3:0: W0612: Unused variable 'app' (unused-variable)",
-    "movie_db/conftest.py:3:0: W0611: Unused app imported from api (unused-import)"
+    "movie_db/conftest.py:31:0: W0612: Unused variable 'client' (unused-variable)",
+    "movie_db/conftest.py:38:0: W0612: Unused variable 'mock_get_movies' (unused-variable)"
    ],
-   "score": 22.2
+   "score": 53.8
   },
   {
    "file_name": "./movie_db/db_connect.py",
@@ -200,5 +201,5 @@
    "score": 96.6
   }
  ],
- "average_score": 67.8
+ "average_score": 71.3
 }
