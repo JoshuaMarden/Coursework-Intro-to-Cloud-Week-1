@@ -16,15 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
       - name: Deploy to Staging server
         run: |
-          ssh ~/.ssh/id_rsa ec2-user@ec2-13-40-119-155.eu-west-2.compute.amazonaws.com
+          ssh ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@ec2-13-40-119-155.eu-west-2.compute.amazonaws.com
             cd ${{ secrets.REMOTE_TARGET }}
             git pull origin main
             exit
