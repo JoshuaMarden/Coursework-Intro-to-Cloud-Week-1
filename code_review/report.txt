@@ -36,45 +36,32 @@ Your code has been rated at 10.00/10
 
 ./movie_db/api.py
 ************* Module api
-movie_db/api.py:5:0: C0301: Line too long (171/150) (line-too-long)
-movie_db/api.py:105:0: C0301: Line too long (152/150) (line-too-long)
-movie_db/api.py:5:0: E0611: No name 'create_movie' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'update_movie' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'delete_movie' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'get_genres' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'get_genre' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'get_movies_by_genre' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'get_movie_by_country' in module 'database' (no-name-in-module)
-movie_db/api.py:5:0: E0611: No name 'get_countries' in module 'database' (no-name-in-module)
+movie_db/api.py:98:0: C0301: Line too long (152/150) (line-too-long)
 movie_db/api.py:40:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
 movie_db/api.py:71:11: R0916: Too many boolean expressions in if statement (6/5) (too-many-boolean-expressions)
-movie_db/api.py:105:11: R0916: Too many boolean expressions in if statement (9/5) (too-many-boolean-expressions)
-movie_db/api.py:120:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-movie_db/api.py:91:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+movie_db/api.py:64:8: W0612: Unused variable 'overview' (unused-variable)
+movie_db/api.py:65:8: W0612: Unused variable 'status' (unused-variable)
+movie_db/api.py:66:8: W0612: Unused variable 'budget' (unused-variable)
+movie_db/api.py:67:8: W0612: Unused variable 'revenue' (unused-variable)
+movie_db/api.py:98:11: R0916: Too many boolean expressions in if statement (9/5) (too-many-boolean-expressions)
+movie_db/api.py:84:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+movie_db/api.py:84:23: W0613: Unused argument 'movie_id' (unused-argument)
 movie_db/api.py:33:0: W0612: Unused variable 'endpoint_index' (unused-variable)
 movie_db/api.py:38:0: W0612: Unused variable 'endpoint_get_movies' (unused-variable)
-movie_db/api.py:91:0: W0612: Unused variable 'endpoint_get_movie' (unused-variable)
+movie_db/api.py:84:0: W0612: Unused variable 'endpoint_get_movie' (unused-variable)
 movie_db/api.py:1:0: W0612: Unused variable 'current_app' (unused-variable)
 movie_db/api.py:2:0: W0612: Unused variable 'extras' (unused-variable)
 movie_db/api.py:3:0: W0612: Unused variable 'date' (unused-variable)
 movie_db/api.py:4:0: W0612: Unused variable 'Any' (unused-variable)
-movie_db/api.py:5:0: W0612: Unused variable 'get_genres' (unused-variable)
-movie_db/api.py:5:0: W0612: Unused variable 'get_genre' (unused-variable)
-movie_db/api.py:5:0: W0612: Unused variable 'get_movies_by_genre' (unused-variable)
-movie_db/api.py:5:0: W0612: Unused variable 'get_movie_by_country' (unused-variable)
-movie_db/api.py:5:0: W0612: Unused variable 'get_countries' (unused-variable)
+movie_db/api.py:5:0: W0612: Unused variable 'get_movie_by_id' (unused-variable)
 movie_db/api.py:1:0: W0611: Unused current_app imported from flask (unused-import)
 movie_db/api.py:2:0: W0611: Unused extras imported from psycopg2 (unused-import)
 movie_db/api.py:3:0: W0611: Unused date imported from datetime (unused-import)
 movie_db/api.py:4:0: W0611: Unused Any imported from typing (unused-import)
-movie_db/api.py:5:0: W0611: Unused get_genres imported from database (unused-import)
-movie_db/api.py:5:0: W0611: Unused get_genre imported from database (unused-import)
-movie_db/api.py:5:0: W0611: Unused get_movies_by_genre imported from database (unused-import)
-movie_db/api.py:5:0: W0611: Unused get_movie_by_country imported from database (unused-import)
-movie_db/api.py:5:0: W0611: Unused get_countries imported from database (unused-import)
+movie_db/api.py:5:0: W0611: Unused get_movie_by_id imported from database (unused-import)
 
 -----------------------------------
-Your code has been rated at 2.18/10
+Your code has been rated at 6.52/10
 
 ./movie_db/import.py
 ************* Module import
