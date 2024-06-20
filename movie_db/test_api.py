@@ -2,7 +2,7 @@ import pytest
 from flask import json
 from datetime import datetime
 from api import app
-
+import conftest
 """
 Note from the Movie DB API team:
  - This half-finished code was written by an intern with no coding experience so expect there to be bugs and issues.
@@ -24,7 +24,10 @@ def test_endpoint_index(client):
     assert response.json == {"message": "Welcome to the Movie API"}
 
 
-def test_endpoint_get_movies(client):
+def test_endpoint_get_movies(client, mock_get_movies, sample_movie):
+    mock_get_movies.return_value = [sample_movie]
+
     response = client.get("/movies")
     assert response.status_code == 200
     assert isinstance(response.json, list)
+    assert response.json == [sample_movie]

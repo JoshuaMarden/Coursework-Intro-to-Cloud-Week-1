@@ -28,6 +28,13 @@ def sample_movie():
 
 
 @pytest.fixture
-def mock_endpoint_get_movies():
-    with patch("app.endpoint_get_movies") as mock:
+def client():
+    app.config["TESTING"] = True
+    with app.test_client() as client:
+        yield client
+
+
+@pytest.fixture
+def mock_get_movies():
+    with patch('api.get_movies') as mock:
         yield mock
