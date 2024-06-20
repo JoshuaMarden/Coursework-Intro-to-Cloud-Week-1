@@ -5,10 +5,6 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         with:
