@@ -8,11 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Debug Repository Path
+
         run: |
           pwd
           ls -la
 
       - name: Install Node.js
+
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
