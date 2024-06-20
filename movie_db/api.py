@@ -131,56 +131,5 @@ def endpoint_get_movie(movie_id: int):
 
         return jsonify({"message": "Movie deleted"})
 
-
-@app.route("/genres", methods=["GET"])
-def endpoint_get_genres():
-    """Get a list of all genres"""
-    genres = get_genres()
-
-    if not genres:
-        return jsonify({"error": "No genres found"}), 404
-
-    return jsonify(genres)
-
-
-@app.route("/genres/<int:genre_id>/movies", methods=["GET"])
-def endpoint_movies_by_genre(genre_id: int):
-    """Get list of movie details by genre"""
-
-    if not get_genre(genre_id):
-        return jsonify({"error": "Genre not found"}), 404
-
-    movies = get_movies_by_genre(genre_id)
-
-    if not movies:
-        return jsonify({"error": "No movies found for this genre"}), 404
-
-    return jsonify(movies)
-
-
-@app.route("/countries/<string:country_code>", methods=["GET"])
-def endpoint_get_movies_by_country(country_code: str):
-    """Get a list of movie details by country. Optionally, the results can be sorted by a specific field in ascending or descending order."""
-
-    if country_code not in get_countries():
-        return jsonify({"error": "Country not found"}), 404
-
-    sort_by = request.args.get("sort_by")
-    sort_order = request.args.get("sort_order")
-
-    if not validate_sort_by(sort_by):
-        return jsonify({"error": "Invalid sort_by parameter"}), 400
-
-    if not validate_sort_order(sort_order):
-        return jsonify({"error": "Invalid sort_order parameter"}), 400
-
-    movies = get_movie_by_country(country_code, sort_by, sort_order)
-
-    if not movies:
-        return jsonify({"error": "No movies found for this country"}), 404
-
-    return jsonify(movies)
-
-
-if __name__ == "__main__":
+    if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
