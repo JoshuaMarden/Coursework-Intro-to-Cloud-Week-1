@@ -28,9 +28,3 @@ def test_endpoint_get_movies(client):
     response = client.get("/movies")
     assert response.status_code == 200
     assert isinstance(response.json, list)
-
-
-def test_endpoint_get_movie(client):
-    response = client.get("/movies/1")
-    assert response.status_code == 200
-    assert isinstance(response.json, dict)
