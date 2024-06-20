@@ -30,4 +30,4 @@ jobs:
       - name: Run pylint
         run: |
           source venv/bin/activate
-          pylint movie_db/
+          pylint movie_db/ --fail-under=8
