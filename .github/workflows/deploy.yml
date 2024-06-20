@@ -6,22 +6,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         with:
-          ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
-          remote-host: ${{ env.REMOTE_HOST }}
-          remote-user: ${{ env.REMOTE_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: '-rlgoDzvc -i --delete'
           SOURCE: 'dist/'
-          target: ${{ env.REMOTE_TARGET }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: '/dist/, /node_modules/'
