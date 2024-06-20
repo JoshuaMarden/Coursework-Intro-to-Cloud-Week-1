@@ -2,6 +2,7 @@ import pytest
 from flask import json
 from datetime import datetime
 from api import app
+
 """
 Note from the Movie DB API team:
  - This half-finished code was written by an intern with no coding experience so expect there to be bugs and issues.
