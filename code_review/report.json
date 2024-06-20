@@ -58,10 +58,10 @@
   {
    "file_name": "./movie_db/test_api.py",
    "errors": [
-    "movie_db/test_api.py:14:0: W0612: Unused variable 'client' (unused-variable)",
-    "movie_db/test_api.py:20:0: W0612: Unused variable 'test_endpoint_index' (unused-variable)",
-    "movie_db/test_api.py:26:0: W0612: Unused variable 'test_endpoint_get_movies' (unused-variable)",
-    "movie_db/test_api.py:32:0: W0612: Unused variable 'test_endpoint_get_movie' (unused-variable)",
+    "movie_db/test_api.py:15:0: W0612: Unused variable 'client' (unused-variable)",
+    "movie_db/test_api.py:21:0: W0612: Unused variable 'test_endpoint_index' (unused-variable)",
+    "movie_db/test_api.py:27:0: W0612: Unused variable 'test_endpoint_get_movies' (unused-variable)",
+    "movie_db/test_api.py:33:0: W0612: Unused variable 'test_endpoint_get_movie' (unused-variable)",
     "movie_db/test_api.py:2:0: W0612: Unused variable 'json' (unused-variable)",
     "movie_db/test_api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)",
     "movie_db/test_api.py:2:0: W0611: Unused json imported from flask (unused-import)",
