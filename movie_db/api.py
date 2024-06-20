@@ -98,5 +98,6 @@ def endpoint_get_movie(movie_id: int):
         if not title and not release_date and not genre and not overview and not status and not budget and not revenue and not country and not language:
             return jsonify({"error": "No fields to update"}), 400
 
-    if __name__ == "__main__":
-        app.run(debug=True, host="0.0.0.0", port=5000)
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
