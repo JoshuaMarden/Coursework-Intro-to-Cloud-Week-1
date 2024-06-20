@@ -1,9 +1,3 @@
-
-To address the potential issue with secrets not being correctly recognized in the workflow, you can explicitly set the secrets as environment variables within the job. Here's how to structure your workflow with the secrets explicitly defined within the job:
-
-Workflow Configuration with Secrets as Environment Variables
-yaml
-Copy code
 name: Deploy to Staging server
 
 on: [push]
