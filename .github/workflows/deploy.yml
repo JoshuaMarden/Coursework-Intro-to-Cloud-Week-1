@@ -1,4 +1,4 @@
-name: Deploy to Staging server
+name: Deploy to Staging Server
 
 on: [push]
 
@@ -7,17 +7,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Node.js
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
       - name: Install npm dependencies
         run: npm install
-      - name: Run build task
+
+      - name: Build Project
         run: npm run build --if-present
+
+      - name: List Files for Debugging
+        run: ls -la && ls -la dist
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
@@ -25,7 +30,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: '-rlgoDzvc -i --delete'
           SOURCE: 'dist/'
-          REMOTE_HOST: ec2-13-40-119-155.eu-west-2.compute.amazonaws.com
-          REMOTE_USER: ec2-user
-          TARGET: /home/ec2-user/Coursework-Intro-to-Cloud-Week-1
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: '/home/ec2-user/Coursework-Intro-to-Cloud-Week-1/'
           EXCLUDE: '/dist/, /node_modules/'
