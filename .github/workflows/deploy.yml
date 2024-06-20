@@ -15,6 +15,7 @@ jobs:
 
       - name: Install npm dependencies
         run: npm install
+      - name: Initialise npm
         run: npm init
       - name: Run build task
         run: npm run build --if-present
