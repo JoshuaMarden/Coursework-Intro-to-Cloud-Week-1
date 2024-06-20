@@ -1,4 +1,4 @@
-name: Push Pull Commit
+name: Print message on push / pull
 
 on:
   push:
