@@ -1,57 +1,17 @@
 ./movie_db/database.py
 ************* Module database
-movie_db/database.py:109:0: C0301: Line too long (153/150) (line-too-long)
-movie_db/database.py:114:0: C0301: Line too long (163/150) (line-too-long)
 movie_db/database.py:80:8: R0204: Redefinition of genre_types type from list to str (redefined-variable-type)
-movie_db/database.py:110:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:109:17: W0613: Unused argument 'title' (unused-argument)
-movie_db/database.py:109:29: W0613: Unused argument 'release_date' (unused-argument)
-movie_db/database.py:109:49: W0613: Unused argument 'genre' (unused-argument)
-movie_db/database.py:109:61: W0613: Unused argument 'overview' (unused-argument)
-movie_db/database.py:109:76: W0613: Unused argument 'status' (unused-argument)
-movie_db/database.py:109:89: W0613: Unused argument 'budget' (unused-argument)
-movie_db/database.py:109:102: W0613: Unused argument 'revenue' (unused-argument)
-movie_db/database.py:109:116: W0613: Unused argument 'country' (unused-argument)
-movie_db/database.py:109:130: W0613: Unused argument 'language' (unused-argument)
-movie_db/database.py:115:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:114:17: W0613: Unused argument 'title' (unused-argument)
-movie_db/database.py:114:29: W0613: Unused argument 'release_date' (unused-argument)
-movie_db/database.py:114:49: W0613: Unused argument 'genre' (unused-argument)
-movie_db/database.py:114:61: W0613: Unused argument 'overview' (unused-argument)
-movie_db/database.py:114:76: W0613: Unused argument 'status' (unused-argument)
-movie_db/database.py:114:89: W0613: Unused argument 'budget' (unused-argument)
-movie_db/database.py:114:102: W0613: Unused argument 'revenue' (unused-argument)
-movie_db/database.py:114:116: W0613: Unused argument 'country' (unused-argument)
-movie_db/database.py:114:130: W0613: Unused argument 'language' (unused-argument)
-movie_db/database.py:120:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:119:17: W0613: Unused argument 'movie_id' (unused-argument)
-movie_db/database.py:125:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:130:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:129:14: W0613: Unused argument 'genre_id' (unused-argument)
-movie_db/database.py:135:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:134:24: W0613: Unused argument 'genre_id' (unused-argument)
-movie_db/database.py:140:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-movie_db/database.py:139:25: W0613: Unused argument 'country_code' (unused-argument)
-movie_db/database.py:139:39: W0613: Unused argument 'sort_by' (unused-argument)
-movie_db/database.py:139:60: W0613: Unused argument 'sort_order' (unused-argument)
-movie_db/database.py:145:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
 movie_db/database.py:3:0: W0612: Unused variable 'json' (unused-variable)
 movie_db/database.py:21:0: W0612: Unused variable 'get_movies' (unused-variable)
 movie_db/database.py:88:0: W0612: Unused variable 'get_movie_by_id' (unused-variable)
-movie_db/database.py:109:0: W0612: Unused variable 'create_movie' (unused-variable)
-movie_db/database.py:114:0: W0612: Unused variable 'update_movie' (unused-variable)
-movie_db/database.py:119:0: W0612: Unused variable 'delete_movie' (unused-variable)
-movie_db/database.py:124:0: W0612: Unused variable 'get_genres' (unused-variable)
-movie_db/database.py:129:0: W0612: Unused variable 'get_genre' (unused-variable)
-movie_db/database.py:134:0: W0612: Unused variable 'get_movies_by_genre' (unused-variable)
-movie_db/database.py:139:0: W0612: Unused variable 'get_movie_by_country' (unused-variable)
-movie_db/database.py:144:0: W0612: Unused variable 'get_countries' (unused-variable)
 movie_db/database.py:5:0: W0612: Unused variable 'datetime' (unused-variable)
+movie_db/database.py:5:0: W0612: Unused variable 'date' (unused-variable)
 movie_db/database.py:3:0: W0611: Unused import json (unused-import)
 movie_db/database.py:5:0: W0611: Unused datetime imported from datetime (unused-import)
+movie_db/database.py:5:0: W0611: Unused date imported from datetime (unused-import)
 
 -----------------------------------
-Your code has been rated at 4.30/10
+Your code has been rated at 8.55/10
 
 ./movie_db/test_api.py
 ************* Module test_api
@@ -89,9 +49,16 @@ Your code has been rated at 10.00/10
 ************* Module api
 movie_db/api.py:5:0: C0301: Line too long (171/150) (line-too-long)
 movie_db/api.py:105:0: C0301: Line too long (152/150) (line-too-long)
+movie_db/api.py:5:0: E0611: No name 'create_movie' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'update_movie' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'delete_movie' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'get_genres' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'get_genre' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'get_movies_by_genre' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'get_movie_by_country' in module 'database' (no-name-in-module)
+movie_db/api.py:5:0: E0611: No name 'get_countries' in module 'database' (no-name-in-module)
 movie_db/api.py:40:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
 movie_db/api.py:71:11: R0916: Too many boolean expressions in if statement (6/5) (too-many-boolean-expressions)
-movie_db/api.py:80:20: E1121: Too many positional arguments for function call (too-many-function-args)
 movie_db/api.py:105:11: R0916: Too many boolean expressions in if statement (9/5) (too-many-boolean-expressions)
 movie_db/api.py:120:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 movie_db/api.py:91:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
@@ -111,7 +78,7 @@ movie_db/api.py:3:0: W0611: Unused date imported from datetime (unused-import)
 movie_db/api.py:4:0: W0611: Unused Any imported from typing (unused-import)
 
 -----------------------------------
-Your code has been rated at 7.68/10
+Your code has been rated at 4.55/10
 
 ./movie_db/import.py
 ************* Module import
