@@ -28,3 +28,4 @@ jobs:
             cd /home/ec2-user/Coursework-Intro-to-Cloud-Week-1
             git pull origin main
             exit
+            EOF
