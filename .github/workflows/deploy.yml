@@ -12,7 +12,7 @@ jobs:
 
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '16.x'
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
@@ -22,5 +22,5 @@ jobs:
           SOURCE: 'dist/'
           REMOTE_HOST: ec2-13-40-119-155.eu-west-2.compute.amazonaws.com
           REMOTE_USER: ec2-user
-          TARGET: Coursework-Intro-to-Cloud-Week-1
+          TARGET: /home/ec2-user/Coursework-Intro-to-Cloud-Week-1
           EXCLUDE: '/dist/, /node_modules/'
