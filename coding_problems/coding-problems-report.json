@@ -1,12 +1,12 @@
 {
-    "created": 1718894450.115271,
-    "duration": 1.9647161960601807,
+    "created": 1718972470.228817,
+    "duration": 0.6375632286071777,
     "exitcode": 1,
     "root": "/home/runner/work/Coursework-Intro-to-Cloud-Week-1/Coursework-Intro-to-Cloud-Week-1/coding_problems",
     "environment": {},
     "summary": {
-        "passed": 426,
-        "failed": 191,
+        "passed": 603,
+        "failed": 14,
         "total": 617,
         "collected": 617
     }
